@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>banking portal</title>
+  </head>
+  <body>
+    {% load static %}
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+      <div class="container">
+        <a href="#" class="navbar-brand"><span class="text-danger">SPARKS</span> BANKING</a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-2">
+            <li class="nav-item">
+              <a href="/banking_app" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="/banking_app/customer" class="nav-link active">Customers</a>
+            </li>
+            <li class="nav-item">
+              <a href="/banking_app/transaction" class="nav-link">Transaction</a>
+            </li>
+            <li class="nav-item">
+              <a href="/banking_app/about" class="nav-link">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--showcase-->
+    <section class="bg-dark text-light p-5 text-center">
+        
+        <div class="container">
+        {% include 'bank/messages.html' %}
+        <h1 class="p-5">CUSTOMER DETAILS</h1>
+        <div class="d-sm-flex align-items-center justify-content-center">
+            <table class="table text-light">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Current Balance</th>
+                  </tr>
+                </thead>
+                {% for i in details%}
+                <tbody>
+                  <tr>
+                    <th scope="row">{{i.id}}</th>
+                    <td>{{i.name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.avail_bal}}</td>
+                  </tr>
+                  
+                </tbody>
+                {% endfor %}
+              </table>
+            
+          
+        </div>
+      </div>
+    </section>
+    <section class="bg-light text-dark p-5 text-center">
+        <div class="container">
+            <h2 class="p-5">SEND MONEY EASILY</h2>
+        <form method="post">{% csrf_token %}
+            <label for="basic-url" class="form-label">Reciever's details</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Recipient's name</span>
+                <input type="text" class="form-control" placeholder="name" aria-label="Username" aria-describedby="basic-addon1">
+              </div>
+              
+              <div class="input-group mb-3">
+                <input type="text" name="email" class="form-control" placeholder="Recipient's email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                
+              </div>
+              
+              <label for="basic-url" class="form-label">Enter The Amount</label>
+              
+              <div class="input-group mb-3">
+                <span class="input-group-text">$</span>
+                <input type="text" name="amt" class="form-control" aria-label="Amount (to the nearest dollar)">
+                <span class="input-group-text">.00</span>
+              </div>
+              
+              <label for="basic-url" class="form-label">Sender's Details</label>
+              <div class="input-group mb-3">
+                <input type="text" name="semail" class="form-control" placeholder=" Sender's email" aria-label="Username">
+            
+                
+              </div>
+              <button
+                class="btn btn-success btn-lg"
+                data-bs-toggle="modal"
+              >
+              send
+              </button>
+        </form>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   <script>
+     setTimeout(function(){
+        if($('#msg').length>0){
+            $('#msg').remove();
+        }
+     },2000)
+
+   </script>
+  </body>
+</html>
