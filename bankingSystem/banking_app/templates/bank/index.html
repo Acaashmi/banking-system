@@ -24,20 +24,15 @@
   <body>
     {% load static %}
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark py-3 fixed-top">
       <div class="container">
         <a href="#" class="navbar-brand"><span class="text-danger">SPARKS</span> BANKING</a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navmenu"
-        >
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navmenu">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-2">
             <li class="nav-item">
               <a href="/banking_app" class="nav-link active">Home</a>
@@ -62,7 +57,7 @@
         <div class="d-sm-flex align-items-center justify-content-center">
           
             <img
-            class="img-fluid w-40 d-none d-sm-block"
+            class="img-fluid w-40 d-none d-sm-flex"
             src="{% static '1.png' %}"
             alt=""
           />
@@ -98,15 +93,15 @@
     </section>
     <section class="bg-light text-dark p-5 text-center">
       <div class="container">
-        <div class="d-sm-flex align-items-center justify-content-center">
-          <div class="d-sm-flex">
+        <div class="d-md-flex align-items-center justify-content-center">
+          <div class="d-md-flex">
             <img
               class="img-fluid w-40 d-none d-sm-block"
               src="{% static '2.png' %}"
               alt=""
             />
             <div>
-              <p class="lead my-4 p-5"><b>Sending money is now <span class="text-success">easy</span></b></p>
+              <p class="lead my-4 p-md-5 p-2"><b>Sending money is now <span class="text-success">easy</span></b></p>
               <a href="/banking_app/customer">
               <button
                 class="btn btn-success btn-lg"
@@ -118,9 +113,9 @@
               </a>
             </div>
           </div>
-          <div class="d-sm-flex">
+          <div class="d-md-flex">
             <div>
-              <p class="lead my-4 p-5"><b>Go through all your transactions in <span class="text-danger">One go</span></b></p>
+              <p class="lead my-4 p-md-5 p-2  "><b>Go through all your transactions in <span class="text-danger">One go</span></b></p>
               <a href="/banking_app/transaction">
               <button
                 class="btn btn-danger btn-lg"
@@ -133,7 +128,7 @@
             </div>
             
             <img
-              class="img-fluid w-40 d-none d-sm-block"
+              class="img-fluid w-40 d-none d-sm-block p-5"
               src="{% static '3.png' %}"
               alt=""
             />
